@@ -1,11 +1,7 @@
 import React from 'react';
 
-function App() {
-  return (
-    <div>
-      
-    </div>
-  );
-}
+import GameLayout from './components/GameLayout';
+
+const  App = () => <GameLayout />
 
 export default App;
