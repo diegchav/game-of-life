@@ -1,11 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import Slider from './Slider';
+
 import StyledGameControls from './styles/StyledGameControls';
+
+import {
+  MIN_GRID_SIZE,
+  MAX_GRID_SIZE,
+  UPDATE_STEP
+} from '../constants';
 
 const GameControls = ({ gridSize, changeGridSize }) => (
   <StyledGameControls>
-    <input type="range" min="10" max="50" step="10" value={gridSize} onChange={changeGridSize} />
+    <Slider min={MIN_GRID_SIZE} max={MAX_GRID_SIZE} step={UPDATE_STEP} gridSize={gridSize} onChange={changeGridSize} />
   </StyledGameControls>
 );
 
