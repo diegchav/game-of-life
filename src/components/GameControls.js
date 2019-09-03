@@ -4,7 +4,7 @@ import StyledGameControls from './styles/StyledGameControls';
 
 const GameControls = () => (
   <StyledGameControls>
-    <input type="range" min="50" max="100" step="10" />
+    <input type="range" min="10" max="50" step="10" />
   </StyledGameControls>
 );
 
