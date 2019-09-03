@@ -6,18 +6,27 @@ import GameControls from './GameControls';
 
 import StyledGameLayout from './styles/StyledGameLayout';
 
-import { generatePopulation } from '../helpers/game.helpers';
+import { generatePopulation, updatePopulation } from '../helpers/game.helpers';
+
+import {
+  GRID_SIZE,
+  UPDATE_INTERVAL
+} from '../constants';
 
 class GameLayout extends React.Component {
   state = {
-    gridSize: 10,
-    grid: []
+    gridSize: GRID_SIZE,
+    grid: generatePopulation(GRID_SIZE)
   }
 
   componentDidMount() {
-    this.setState({
-      grid: generatePopulation(this.state.gridSize)
-    });
+    this.interval = setInterval(() => {
+      this.setState({ grid: updatePopulation(this.state.grid) });
+    }, UPDATE_INTERVAL);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.interval);
   }
 
   changeGridSize = (event) => {
