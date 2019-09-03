@@ -13,7 +13,14 @@ import {
 
 const GameControls = ({ gridSize, changeGridSize }) => (
   <StyledGameControls>
-    <Slider min={MIN_GRID_SIZE} max={MAX_GRID_SIZE} step={UPDATE_STEP} gridSize={gridSize} onChange={changeGridSize} />
+    <Slider
+      min={MIN_GRID_SIZE}
+      max={MAX_GRID_SIZE}
+      step={UPDATE_STEP}
+      gridSize={gridSize}
+      trackBackground="#4fb3bf"
+      thumbBackground="#00838f"
+      onChange={changeGridSize} />
   </StyledGameControls>
 );
 

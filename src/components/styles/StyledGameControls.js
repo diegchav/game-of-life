@@ -4,7 +4,7 @@ const StyledGameControls = styled.div`
   display: flex;
   justify-content: center;
   width: 100%;
-  padding: 10px 0;
+  padding: 15px 0;
   background: ${props => props.theme.backgroundColor};
 `;
 
