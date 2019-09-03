@@ -1,7 +1,9 @@
 import React from 'react';
 
 const GameTitle = () => (
-  <div></div>
+  <div>
+    <p>Game of Life</p>
+  </div>
 );
 
 export default GameTitle;
