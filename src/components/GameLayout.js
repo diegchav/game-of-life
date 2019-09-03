@@ -20,13 +20,19 @@ class GameLayout extends React.Component {
     });
   }
 
+  changeGridSize = (event) => {
+    const newGridSize = parseInt(event.target.value);
+    const newPopulation = generatePopulation(newGridSize);
+    this.setState({ gridSize: newGridSize, grid: newPopulation });
+  };
+
   render() {
-    const { grid } = this.state;
+    const { grid, gridSize } = this.state;
     return (
       <StyledGameLayout>
         <GameTitle />
         <GameGrid grid={grid} />
-        <GameControls />
+        <GameControls gridSize={gridSize} changeGridSize={this.changeGridSize} />
       </StyledGameLayout>
     );
   }
