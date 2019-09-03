@@ -9,7 +9,14 @@ const StyledApp = styled.div`
   justify-content: center;
   width: 100vw;
   height: 100vh;
+  background: ${props => props.theme.backgroundColor};
 `;
+
+StyledApp.defaultProps = {
+  theme: {
+    backgroundColor: '#005662'
+  }
+};
 
 const  App = () => (
   <StyledApp>

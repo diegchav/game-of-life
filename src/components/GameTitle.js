@@ -1,9 +1,11 @@
 import React from 'react';
 
+import StyledGameTitle from './styles/StyledGameTitle';
+
 const GameTitle = () => (
-  <div>
+  <StyledGameTitle>
     <p>Game of Life</p>
-  </div>
+  </StyledGameTitle>
 );
 
 export default GameTitle;
