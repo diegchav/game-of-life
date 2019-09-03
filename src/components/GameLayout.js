@@ -31,7 +31,8 @@ class GameLayout extends React.Component {
 
   changeGridSize = (event) => {
     const newGridSize = parseInt(event.target.value);
-    const newPopulation = generatePopulation(newGridSize);
+    const oldPopulation = [...this.state.grid];
+    const newPopulation = generatePopulation(newGridSize, oldPopulation);
     this.setState({ gridSize: newGridSize, grid: newPopulation });
   };
 
