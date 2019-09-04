@@ -14,6 +14,7 @@ import {
 const GameControls = ({ gridSize, changeGridSize }) => (
   <StyledGameControls>
     <Slider
+      label="Grid Size"
       min={MIN_GRID_SIZE}
       max={MAX_GRID_SIZE}
       step={UPDATE_STEP}

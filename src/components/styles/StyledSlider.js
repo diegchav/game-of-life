@@ -1,37 +1,52 @@
 import styled from 'styled-components';
 
-const StyledSlider = styled.input`
-  -webkit-appearance: none;
-  background: transparent;
+const StyledSlider = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 
-  &:focus {
+  span {
+    margin-right: 5px;
+    color: ${props => props.labelColor};
+    font-size: ${props => props.labelSize};
+  }
+
+  input[type=range] {
+    -webkit-appearance: none;
+    background: transparent;
+    margin: 0;
+    padding: 0;
+  }
+
+  input[type=range]:focus {
     outline: none;
   }
 
   /* Track  */
-  &::-webkit-slider-runnable-track {
+  input[type=range]::-webkit-slider-runnable-track {
     width: 100%;
-    height: 3px;
+    height: 4px;
+    margin: 8px 0;
     cursor: pointer;
     animate: 0.2s;
     box-shadow: 0px 0px 0px #000;
     background: ${props => props.trackBackground};
-    border-radius: 1px;
   }
 
-  &::-moz-range-track {
+  input[type=range]::-moz-range-track {
     width: 100%;
-    height: 3px;
+    height: 4px;
+    margin: 8px 0;
     cursor: pointer;
     animate: 0.2s;
     box-shadow: 0px 0px 0px #000;
     background: ${props => props.trackBackground};
-    border-radius: 1px;
   }
 
-  &::-ms-track {
+  input[type=range]::-ms-track {
     width: 100%;
-    height: 3px;
+    height: 4px;
+    margin: 8px 0;
     cursor: pointer;
     animate: 0.2s;
     background: transparent;
@@ -39,22 +54,20 @@ const StyledSlider = styled.input`
     color: transparent;
   }
 
-  &::-ms-fill-lower {
+  input[type=range]::-ms-fill-lower {
     background: ${props => props.trackBackground};
     border: 0px solid #000;
-    border-radius: 1px;
     box-shadow: 0px 0px 0px #000;
   }
 
-  &::-ms-fill-upper {
+  input[type=range]::-ms-fill-upper {
     background: ${props => props.trackBackground};
     border: 0px solid #000;
-    border-radius: 1px;
     box-shadow: 0px 0px 0px #000;
   }
 
   /* Thumb  */
-  &::-webkit-slider-thumb {
+  input[type=range]::-webkit-slider-thumb {
     box-shadow: 0px 0px 0px #000;
     height: 15px;
     width: 15px;
@@ -62,33 +75,35 @@ const StyledSlider = styled.input`
     background: ${props => props.thumbBackground};
     cursor: pointer;
     -webkit-appearance: none;
-    margin-top: -6px;
+    margin-top: -5px;
   }
 
-  &::-moz-range-thumb {
+  input[type=range]::-moz-range-thumb {
     box-shadow: 0px 0px 0px #000;
     height: 15px;
     width: 15px;
     border-radius: 20px;
     background: ${props => props.thumbBackground};
     cursor: pointer;
-    margin-top: -6px;
+    margin-top: -5px;
   }
 
-  &::-ms-thumb {
+  input[type=range]::-ms-thumb {
     box-shadow: 0px 0px 0px #000;
     height: 15px;
     width: 15px;
     border-radius: 20px;
     background: ${props => props.thumbBackground};
     cursor: pointer;
-    margin-top: -6px;
+    margin-top: -5px;
   }
 `;
 
 StyledSlider.defaultProps = {
   trackBackground: '#9ea7aa',
-  thumbBackground: '#cfd8dc'
+  thumbBackground: '#cfd8dc',
+  labelColor: '#9ea7aa',
+  labelSize: '0.75rem'
 };
 
 export default StyledSlider;
