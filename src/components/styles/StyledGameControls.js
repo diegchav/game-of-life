@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 const StyledGameControls = styled.div`
   display: flex;
-  
+  flex-direction: row;
   justify-content: center;
   width: 100%;
   height: 20px;

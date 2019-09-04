@@ -10,19 +10,22 @@ import { generatePopulation, updatePopulation } from '../helpers/game.helpers';
 
 import {
   GRID_SIZE,
-  UPDATE_INTERVAL
+  UPDATE_INTERVAL,
+  MIN_UPDATE_INTERVAL,
+  MAX_UPDATE_INTERVAL
 } from '../constants';
 
 class GameLayout extends React.Component {
   state = {
     gridSize: GRID_SIZE,
-    grid: generatePopulation(GRID_SIZE)
+    grid: generatePopulation(GRID_SIZE),
+    speed: UPDATE_INTERVAL
   }
 
   componentDidMount() {
     this.interval = setInterval(() => {
       this.setState({ grid: updatePopulation(this.state.grid) });
-    }, UPDATE_INTERVAL);
+    }, (MAX_UPDATE_INTERVAL + MIN_UPDATE_INTERVAL - UPDATE_INTERVAL));
   }
 
   componentWillUnmount() {
@@ -36,13 +39,30 @@ class GameLayout extends React.Component {
     this.setState({ gridSize: newGridSize, grid: newPopulation });
   };
 
+  changeUpdateSpeed = (event) => {
+    const newInterval = parseInt(event.target.value);
+
+    clearInterval(this.interval);
+    this.interval = setInterval(() => {
+      this.setState({
+        grid: updatePopulation(this.state.grid)
+      });
+    }, (MAX_UPDATE_INTERVAL + MIN_UPDATE_INTERVAL - newInterval));
+
+    this.setState({ speed: newInterval });
+  };
+
   render() {
-    const { grid, gridSize } = this.state;
+    const { grid, gridSize, speed } = this.state;
     return (
       <StyledGameLayout>
         <GameTitle />
         <GameGrid grid={grid} />
-        <GameControls gridSize={gridSize} changeGridSize={this.changeGridSize} />
+        <GameControls
+          gridSize={gridSize}
+          speed={speed}
+          changeGridSize={this.changeGridSize}
+          changeUpdateSpeed={this.changeUpdateSpeed} />
       </StyledGameLayout>
     );
   }

@@ -4,6 +4,7 @@ const StyledSlider = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  padding: 0 5px;
 
   span {
     margin-right: 5px;
