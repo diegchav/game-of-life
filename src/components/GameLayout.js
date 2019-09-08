@@ -32,14 +32,14 @@ class GameLayout extends React.Component {
     clearInterval(this.interval);
   }
 
-  changeGridSize = (event) => {
+  handleChangeGridSize = (event) => {
     const newGridSize = parseInt(event.target.value);
     const oldPopulation = [...this.state.grid];
     const newPopulation = generatePopulation(newGridSize, oldPopulation);
     this.setState({ gridSize: newGridSize, grid: newPopulation });
   };
 
-  changeUpdateSpeed = (event) => {
+  handleChangeSpeed = (event) => {
     const newInterval = parseInt(event.target.value);
 
     clearInterval(this.interval);
@@ -61,8 +61,8 @@ class GameLayout extends React.Component {
         <GameControls
           gridSize={gridSize}
           speed={speed}
-          changeGridSize={this.changeGridSize}
-          changeUpdateSpeed={this.changeUpdateSpeed} />
+          onChangeGridSize={this.handleChangeGridSize}
+          onChangeSpeed={this.handleChangeSpeed} />
       </StyledGameLayout>
     );
   }

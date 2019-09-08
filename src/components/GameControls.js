@@ -14,7 +14,7 @@ import {
   UPDATE_INTERVAL_STEP
 } from '../constants';
 
-const GameControls = ({ gridSize, speed, changeGridSize, changeUpdateSpeed }) => (
+const GameControls = ({ gridSize, speed, onChangeGridSize, onChangeSpeed }) => (
   <StyledGameControls>
     <Slider
       label="Grid Size"
@@ -24,7 +24,7 @@ const GameControls = ({ gridSize, speed, changeGridSize, changeUpdateSpeed }) =>
       value={gridSize}
       trackBackground="#4fb3bf"
       thumbBackground="#00838f"
-      onChange={changeGridSize} />
+      onChange={onChangeGridSize} />
     <Slider
       label="Speed"
       min={MIN_UPDATE_INTERVAL}
@@ -33,15 +33,15 @@ const GameControls = ({ gridSize, speed, changeGridSize, changeUpdateSpeed }) =>
       value={speed}
       trackBackground="#4fb3bf"
       thumbBackground="#00838f"
-      onChange={changeUpdateSpeed} />
+      onChange={onChangeSpeed} />
   </StyledGameControls>
 );
 
 GameControls.propTypes = {
   gridSize: PropTypes.number.isRequired,
   speed: PropTypes.number.isRequired,
-  changeGridSize: PropTypes.func.isRequired,
-  changeUpdateSpeed: PropTypes.func.isRequired
+  onChangeGridSize: PropTypes.func.isRequired,
+  onChangeSpeed: PropTypes.func.isRequired
 };
 
 export default GameControls;
