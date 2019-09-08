@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 import GameTitle from './GameTitle';
 import GameGrid from './GameGrid';
@@ -15,57 +15,44 @@ import {
   MAX_UPDATE_INTERVAL
 } from '../constants';
 
-class GameLayout extends React.Component {
-  state = {
-    gridSize: GRID_SIZE,
-    grid: generatePopulation(GRID_SIZE),
-    speed: UPDATE_INTERVAL
-  }
+function GameLayout() {
+  const [ grid, setGrid ] = useState(generatePopulation(GRID_SIZE));
+  const [ gridSize, setGridSize ] = useState(GRID_SIZE);
+  const [ speed, setSpeed ] = useState(UPDATE_INTERVAL);
 
-  componentDidMount() {
-    this.interval = setInterval(() => {
-      this.setState({ grid: updatePopulation(this.state.grid) });
-    }, (MAX_UPDATE_INTERVAL + MIN_UPDATE_INTERVAL - UPDATE_INTERVAL));
-  }
+  // Update grid every 'speed' milliseconds.
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setGrid(updatePopulation(grid));
+    }, (MAX_UPDATE_INTERVAL + MIN_UPDATE_INTERVAL - speed));
 
-  componentWillUnmount() {
-    clearInterval(this.interval);
-  }
+    return () => clearInterval(interval);
+  });
 
-  handleChangeGridSize = (event) => {
+  function handleChangeGridSize(event) {
     const newGridSize = parseInt(event.target.value);
-    const oldPopulation = [...this.state.grid];
+    const oldPopulation = [...grid];
     const newPopulation = generatePopulation(newGridSize, oldPopulation);
-    this.setState({ gridSize: newGridSize, grid: newPopulation });
+    setGridSize(newGridSize);
+    setGrid(newPopulation);
   };
 
-  handleChangeSpeed = (event) => {
+  function handleChangeSpeed(event) {
     const newInterval = parseInt(event.target.value);
-
-    clearInterval(this.interval);
-    this.interval = setInterval(() => {
-      this.setState({
-        grid: updatePopulation(this.state.grid)
-      });
-    }, (MAX_UPDATE_INTERVAL + MIN_UPDATE_INTERVAL - newInterval));
-
-    this.setState({ speed: newInterval });
+    setSpeed(newInterval);
   };
-
-  render() {
-    const { grid, gridSize, speed } = this.state;
-    return (
-      <StyledGameLayout>
-        <GameTitle />
-        <GameGrid grid={grid} />
-        <GameControls
-          gridSize={gridSize}
-          speed={speed}
-          onChangeGridSize={this.handleChangeGridSize}
-          onChangeSpeed={this.handleChangeSpeed} />
-      </StyledGameLayout>
-    );
-  }
+  
+  return (
+    <StyledGameLayout>
+      <GameTitle />
+      <GameGrid grid={grid} />
+      <GameControls
+        gridSize={gridSize}
+        speed={speed}
+        onChangeGridSize={handleChangeGridSize}
+        onChangeSpeed={handleChangeSpeed} />
+    </StyledGameLayout>
+  );
 }
 
 export default GameLayout;
