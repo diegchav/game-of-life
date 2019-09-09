@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import GameTitle from './GameTitle';
 import GameGrid from './GameGrid';
 import GameControls from './GameControls';
+import { ThemeContext } from '../contexts/Theme';
 
 import StyledGameLayout from './styles/StyledGameLayout';
 
@@ -43,15 +44,19 @@ function GameLayout() {
   };
   
   return (
-    <StyledGameLayout>
-      <GameTitle />
-      <GameGrid grid={grid} />
-      <GameControls
-        gridSize={gridSize}
-        speed={speed}
-        onChangeGridSize={handleChangeGridSize}
-        onChangeSpeed={handleChangeSpeed} />
-    </StyledGameLayout>
+    <ThemeContext.Consumer>
+      {theme => (
+        <StyledGameLayout boxShadowColor={theme.secundaryColorDark}>
+          <GameTitle />
+          <GameGrid grid={grid} />
+          <GameControls
+            gridSize={gridSize}
+            speed={speed}
+            onChangeGridSize={handleChangeGridSize}
+            onChangeSpeed={handleChangeSpeed} />
+        </StyledGameLayout>
+      )}
+    </ThemeContext.Consumer>
   );
 }
 

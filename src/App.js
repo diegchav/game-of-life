@@ -17,7 +17,7 @@ const StyledApp = styled.div`
   justify-content: center;
   width: 100vw;
   height: 100vh;
-  background: ${props => props.backgroundColor};
+  /* background: ${props => props.backgroundColor}; */
 `;
 
 StyledApp.propTypes = {
