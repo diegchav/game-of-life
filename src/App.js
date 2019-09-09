@@ -5,9 +5,10 @@ import PropTypes from'prop-types';
 import GameLayout from './components/GameLayout';
 import { ThemeContext } from './contexts/Theme';
 
+import { getRandomTheme } from './helpers/theme.helpers';
+
 import {
-  THEMES,
-  THEME_GREEN
+  THEMES
 } from './constants';
 
 const StyledApp = styled.div`
@@ -24,7 +25,7 @@ StyledApp.propTypes = {
 };
 
 function App() {
-  const [theme, setTheme] = useState(THEMES[THEME_GREEN]);
+  const [theme, setTheme] = useState(THEMES[getRandomTheme()]);
 
   function handleChangeTheme(theme) {
     setTheme(THEMES[theme]);
