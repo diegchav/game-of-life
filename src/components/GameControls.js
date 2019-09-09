@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Slider from './Slider';
+import { ThemeContext } from '../contexts/Theme';
 
 import StyledGameControls from './styles/StyledGameControls';
 
@@ -15,26 +16,30 @@ import {
 } from '../constants';
 
 const GameControls = ({ gridSize, speed, onChangeGridSize, onChangeSpeed }) => (
-  <StyledGameControls>
-    <Slider
-      label="Grid Size"
-      min={MIN_GRID_SIZE}
-      max={MAX_GRID_SIZE}
-      step={GRID_SIZE_STEP}
-      value={gridSize}
-      trackBackground="#4fb3bf"
-      thumbBackground="#00838f"
-      onChange={onChangeGridSize} />
-    <Slider
-      label="Speed"
-      min={MIN_UPDATE_INTERVAL}
-      max={MAX_UPDATE_INTERVAL}
-      step={UPDATE_INTERVAL_STEP}
-      value={speed}
-      trackBackground="#4fb3bf"
-      thumbBackground="#00838f"
-      onChange={onChangeSpeed} />
-  </StyledGameControls>
+  <ThemeContext.Consumer>
+    {theme => (
+      <StyledGameControls>
+        <Slider
+          label="Grid Size"
+          min={MIN_GRID_SIZE}
+          max={MAX_GRID_SIZE}
+          step={GRID_SIZE_STEP}
+          value={gridSize}
+          trackBackground={theme.secundaryColorLight}
+          thumbBackground={theme.primaryColor}
+          onChange={onChangeGridSize} />
+        <Slider
+          label="Speed"
+          min={MIN_UPDATE_INTERVAL}
+          max={MAX_UPDATE_INTERVAL}
+          step={UPDATE_INTERVAL_STEP}
+          value={speed}
+          trackBackground={theme.secundaryColorLight}
+          thumbBackground={theme.primaryColor}
+          onChange={onChangeSpeed} />
+      </StyledGameControls>
+    )}
+  </ThemeContext.Consumer>
 );
 
 GameControls.propTypes = {

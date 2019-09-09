@@ -1,23 +1,22 @@
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 const StyledGridCell = styled.div`
-  /* border: 1px solid ${props => props.theme.borderColor}; */
-
   &.alive {
-    background: ${props => props.theme.aliveBackground};
+    background: ${props => props.aliveBackground};
   }
 
   &.dead {
-    background: ${props => props.theme.deadBackground};
+    background: ${props => props.deadBackground};
   }
 `;
 
 StyledGridCell.defaultProps = {
-  theme: {
-    aliveBackground: '#4fb3bf',
-    deadBackground: '#fff',
-    borderColor: '#005662'
-  }
+  deadBackground: '#fff'
+};
+
+StyledGridCell.propTypes = {
+  aliveBackground: PropTypes.string.isRequired
 };
 
 export default StyledGridCell;

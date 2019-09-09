@@ -1,7 +1,8 @@
 import React from 'react';
 
 import {
-  THEME_PALETTE
+  THEMES,
+  THEME_GREEN
 } from '../constants';
 
-export const ThemeContext = React.createContext(THEME_PALETTE.green);
+export const ThemeContext = React.createContext(THEMES[THEME_GREEN]);

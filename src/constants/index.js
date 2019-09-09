@@ -11,10 +11,12 @@ export const UPDATE_INTERVAL = 500;
 export const UPDATE_INTERVAL_STEP = 200;
 
 // Theme
-export const THEME_PALETTE = {
-  green: {
-    primary: '#00838f',
-    secundaryLight: '#4fb3bf',
-    secundaryDark: '##005662'
+export const THEME_GREEN = 'green';
+export const THEMES = {
+  [THEME_GREEN]: {
+    name: THEME_GREEN,
+    primaryColor: '#00838f',
+    secundaryColorLight: '#4fb3bf',
+    secundaryColorDark: '#005662'
   }
 };

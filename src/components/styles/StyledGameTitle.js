@@ -1,15 +1,14 @@
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 const StyledGameTitle = styled.div`
-  background: ${props => props.theme.backgroundColor};
+  background: ${props => props.backgroundColor};
   width: 100%;
   text-align: center;
 `;
 
-StyledGameTitle.defaultProps = {
-  theme: {
-    backgroundColor: '#00838f'
-  }
+StyledGameTitle.propTypes = {
+  backgroundColor: PropTypes.string.isRequired
 };
 
 export default StyledGameTitle;

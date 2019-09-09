@@ -1,7 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
+import PropTypes from'prop-types';
 
 import GameLayout from './components/GameLayout';
+import { ThemeContext } from './contexts/Theme';
+
+import {
+  THEMES,
+  THEME_GREEN
+} from './constants';
 
 const StyledApp = styled.div`
   display: flex;
@@ -9,19 +16,27 @@ const StyledApp = styled.div`
   justify-content: center;
   width: 100vw;
   height: 100vh;
-  background: ${props => props.theme.backgroundColor};
+  background: ${props => props.backgroundColor};
 `;
 
-StyledApp.defaultProps = {
-  theme: {
-    backgroundColor: '#005662'
-  }
+StyledApp.propTypes = {
+  backgroundColor: PropTypes.string.isRequired
 };
 
-const  App = () => (
-  <StyledApp>
-    <GameLayout />
-  </StyledApp>
-);
+function App() {
+  const [theme, setTheme] = useState(THEMES[THEME_GREEN]);
+
+  function handleChangeTheme(theme) {
+    setTheme(THEMES[theme]);
+  }
+
+  return (
+    <ThemeContext.Provider value={theme}>
+      <StyledApp backgroundColor={theme.secundaryColorDark}>
+        <GameLayout onThemeChange={handleChangeTheme} />
+      </StyledApp>
+    </ThemeContext.Provider>
+  );
+};
 
 export default App;
