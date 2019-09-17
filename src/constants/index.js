@@ -25,9 +25,9 @@ export const THEMES = {
     secundaryColorDark: '#005662'
   },
   [THEME_PURPLE]: {
-    primaryColor: '#6a1b9a',
-    secundaryColorLight: '#9c4dcc',
-    secundaryColorDark: '#38006b'
+    primaryColor: '#9c27b0',
+    secundaryColorLight: '#d05ce3',
+    secundaryColorDark: '#6a0080'
   },
   [THEME_BLUE]: {
     primaryColor: '#01579b',
@@ -40,13 +40,13 @@ export const THEMES = {
     secundaryColorDark: '#494949'
   },
   [THEME_RED]: {
-    primaryColor: '#d32f2f',
-    secundaryColorLight: '#ff6659',
-    secundaryColorDark: '#9a0007'  
+    primaryColor: '#e57373',
+    secundaryColorLight: '#ffa4a2',
+    secundaryColorDark: '#af4448'  
   },
   [THEME_ORANGE]: {
-    primaryColor: '#ffa726',
-    secundaryColorLight: '#ffd95b',
-    secundaryColorDark: '#c77800'  
+    primaryColor: '#ffb74d',
+    secundaryColorLight: '#ffe97d',
+    secundaryColorDark: '#c88719'
   }
 };
