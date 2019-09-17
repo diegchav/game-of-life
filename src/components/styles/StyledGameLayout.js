@@ -9,9 +9,9 @@ const StyledGameLayout = styled.div`
   align-items: center;
   justify-content: center;
   width: 70vw;
-  -webkit-box-shadow: 0 0 5px 5px rgba(${props => hexColor2Rgb(props.boxShadowColor)}, 0.5);
-  -moz-box-shadow: 0 0 5px 5px rgba(${props => hexColor2Rgb(props.boxShadowColor)}, 0.5);
-  box-shadow: 0 0 5px 5px rgba(${props => hexColor2Rgb(props.boxShadowColor)}, 0.5);
+  -webkit-box-shadow: 0 0 8px 8px rgba(${props => hexColor2Rgb(props.boxShadowColor)}, 0.3);
+  -moz-box-shadow: 0 0 8px 8px rgba(${props => hexColor2Rgb(props.boxShadowColor)}, 0.3);
+  box-shadow: 0 0 8px 8px rgba(${props => hexColor2Rgb(props.boxShadowColor)}, 0.3);
 `;
 
 StyledGameLayout.propTypes = {
