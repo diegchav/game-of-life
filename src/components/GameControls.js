@@ -2,7 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Slider from './Slider';
+import ColorPicker from './ColorPicker';
 import { ThemeContext } from '../contexts/Theme';
+
+import { getThemeColors } from '../helpers/theme.helpers';
 
 import StyledGameControls from './styles/StyledGameControls';
 
@@ -15,7 +18,9 @@ import {
   UPDATE_INTERVAL_STEP
 } from '../constants';
 
-const GameControls = ({ gridSize, speed, onChangeGridSize, onChangeSpeed }) => (
+const themeColors = getThemeColors();
+
+const GameControls = ({ gridSize, speed, onChangeGridSize, onChangeSpeed, onThemeChange }) => (
   <ThemeContext.Consumer>
     {theme => (
       <StyledGameControls>
@@ -37,6 +42,11 @@ const GameControls = ({ gridSize, speed, onChangeGridSize, onChangeSpeed }) => (
           trackBackground={theme.secundaryColorLight}
           thumbBackground={theme.primaryColor}
           onChange={onChangeSpeed} />
+        <ColorPicker
+          label="Theme"
+          currentColor={theme.primaryColor}
+          colors={themeColors}
+          onPickColor={onThemeChange} />
       </StyledGameControls>
     )}
   </ThemeContext.Consumer>
@@ -46,7 +56,8 @@ GameControls.propTypes = {
   gridSize: PropTypes.number.isRequired,
   speed: PropTypes.number.isRequired,
   onChangeGridSize: PropTypes.func.isRequired,
-  onChangeSpeed: PropTypes.func.isRequired
+  onChangeSpeed: PropTypes.func.isRequired,
+  onThemeChange: PropTypes.func.isRequired
 };
 
 export default GameControls;

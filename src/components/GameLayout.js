@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 
 import GameTitle from './GameTitle';
 import GameGrid from './GameGrid';
@@ -16,7 +17,7 @@ import {
   MAX_UPDATE_INTERVAL
 } from '../constants';
 
-function GameLayout() {
+function GameLayout({ onThemeChange }) {
   const [ grid, setGrid ] = useState(generatePopulation(GRID_SIZE));
   const [ gridSize, setGridSize ] = useState(GRID_SIZE);
   const [ speed, setSpeed ] = useState(UPDATE_INTERVAL);
@@ -53,11 +54,16 @@ function GameLayout() {
             gridSize={gridSize}
             speed={speed}
             onChangeGridSize={handleChangeGridSize}
-            onChangeSpeed={handleChangeSpeed} />
+            onChangeSpeed={handleChangeSpeed}
+            onThemeChange={onThemeChange} />
         </StyledGameLayout>
       )}
     </ThemeContext.Consumer>
   );
 }
+
+GameLayout.propTypes = {
+  onThemeChange: PropTypes.func.isRequired
+};
 
 export default GameLayout;

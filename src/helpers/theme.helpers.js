@@ -4,7 +4,8 @@ import {
   THEME_BLUE,
   THEME_GREY,
   THEME_RED,
-  THEME_ORANGE
+  THEME_ORANGE,
+  THEMES
 } from '../constants';
 
 export const getRandomTheme = () => {
@@ -40,3 +41,12 @@ export const hexColor2Rgb = (hexColor) => {
 
   return `${r}, ${g}, ${b}`;
 };
+
+export const getThemeColors = () => (
+  Object.keys(THEMES).map(key => {
+    return {
+      name: key,
+      color: THEMES[key].primaryColor
+    };
+  })
+);
