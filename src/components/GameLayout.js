@@ -47,7 +47,7 @@ function GameLayout({ onThemeChange }) {
   return (
     <ThemeContext.Consumer>
       {theme => (
-        <StyledGameLayout boxShadowColor={theme.secundaryColorDark}>
+        <StyledGameLayout>
           <GameTitle />
           <GameGrid grid={grid} />
           <GameControls
