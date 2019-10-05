@@ -1,17 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
 import { ThemeContext } from '../contexts/Theme';
 
 import StyledGameTitle from './styles/StyledGameTitle';
 
-const GameTitle = () => (
-  <ThemeContext.Consumer>
-    {theme => (
-      <StyledGameTitle backgroundColor={theme.primaryColor}>
-        <p>Game of Life</p>
-      </StyledGameTitle>
-    )}
-  </ThemeContext.Consumer>
-);
+const GameTitle = () => {
+  const theme = useContext(ThemeContext);
+  return (
+    <StyledGameTitle backgroundColor={theme.primaryColor}>
+      <p>Game of Life</p>
+    </StyledGameTitle>
+  );
+};
 
 export default GameTitle;

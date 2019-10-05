@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import GameTitle from './GameTitle';
 import GameGrid from './GameGrid';
 import GameControls from './GameControls';
-import { ThemeContext } from '../contexts/Theme';
 
 import StyledGameLayout from './styles/StyledGameLayout';
 
@@ -45,20 +44,16 @@ function GameLayout({ onThemeChange }) {
   };
   
   return (
-    <ThemeContext.Consumer>
-      {theme => (
-        <StyledGameLayout>
-          <GameTitle />
-          <GameGrid grid={grid} />
-          <GameControls
-            gridSize={gridSize}
-            speed={speed}
-            onChangeGridSize={handleChangeGridSize}
-            onChangeSpeed={handleChangeSpeed}
-            onThemeChange={onThemeChange} />
-        </StyledGameLayout>
-      )}
-    </ThemeContext.Consumer>
+    <StyledGameLayout>
+      <GameTitle />
+      <GameGrid grid={grid} />
+      <GameControls
+        gridSize={gridSize}
+        speed={speed}
+        onChangeGridSize={handleChangeGridSize}
+        onChangeSpeed={handleChangeSpeed}
+        onThemeChange={onThemeChange} />
+    </StyledGameLayout>
   );
 }
 

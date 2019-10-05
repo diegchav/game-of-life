@@ -1,19 +1,18 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 
 import { ThemeContext } from '../contexts/Theme';
 
 import StyledGridCell from './styles/StyledGridCell';
 
-const GridCell = ({ value }) => (
-  <ThemeContext.Consumer>
-    {theme => (
-      <StyledGridCell
-        className={value ? 'alive' : 'dead'}
-        aliveBackground={theme.secundaryColorLight} />
-    )}
-  </ThemeContext.Consumer>
-);
+const GridCell = ({ value }) => {
+  const theme = useContext(ThemeContext);
+  return (
+    <StyledGridCell
+      className={value ? 'alive' : 'dead'}
+      aliveBackground={theme.secundaryColorLight} />
+  );
+};
 
 GridCell.propTypes = {
   value: PropTypes.number.isRequired
