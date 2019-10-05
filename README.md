@@ -2,6 +2,12 @@
 
 Simple implementation of Conway's Game of Life using React and styled components.
 
+## Technologies
+
+- React
+- Context API
+- Styled Components
+
 ## Demo
 
 You can check the online demo at <https://diegchav.github.io/game-of-life>
