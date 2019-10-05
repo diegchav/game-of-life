@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 
 import Slider from './Slider';
 import ColorPicker from './ColorPicker';
-import { ThemeContext } from '../contexts/Theme';
+
+import { ThemeContext } from '../providers/Theme';
 
 import { getThemeColors } from '../helpers/theme.helpers';
 
@@ -20,8 +21,8 @@ import {
 
 const themeColors = getThemeColors();
 
-const GameControls = ({ gridSize, speed, onChangeGridSize, onChangeSpeed, onThemeChange }) => {
-  const theme = useContext(ThemeContext);
+const GameControls = ({ gridSize, speed, onChangeGridSize, onChangeSpeed }) => {
+  const { theme, changeTheme } = useContext(ThemeContext);
   return (
     <StyledGameControls>
       <Slider
@@ -46,7 +47,7 @@ const GameControls = ({ gridSize, speed, onChangeGridSize, onChangeSpeed, onThem
         label="Theme"
         currentColor={theme.primaryColor}
         colors={themeColors}
-        onPickColor={onThemeChange} />
+        onPickColor={changeTheme} />
     </StyledGameControls>
   )
 };
@@ -55,8 +56,7 @@ GameControls.propTypes = {
   gridSize: PropTypes.number.isRequired,
   speed: PropTypes.number.isRequired,
   onChangeGridSize: PropTypes.func.isRequired,
-  onChangeSpeed: PropTypes.func.isRequired,
-  onThemeChange: PropTypes.func.isRequired
+  onChangeSpeed: PropTypes.func.isRequired
 };
 
 export default GameControls;

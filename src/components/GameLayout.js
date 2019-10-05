@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
 
 import GameTitle from './GameTitle';
 import GameGrid from './GameGrid';
@@ -51,14 +50,9 @@ function GameLayout({ onThemeChange }) {
         gridSize={gridSize}
         speed={speed}
         onChangeGridSize={handleChangeGridSize}
-        onChangeSpeed={handleChangeSpeed}
-        onThemeChange={onThemeChange} />
+        onChangeSpeed={handleChangeSpeed} />
     </StyledGameLayout>
   );
 }
-
-GameLayout.propTypes = {
-  onThemeChange: PropTypes.func.isRequired
-};
 
 export default GameLayout;

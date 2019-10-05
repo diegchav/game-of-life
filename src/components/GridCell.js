@@ -1,12 +1,12 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 
-import { ThemeContext } from '../contexts/Theme';
+import { ThemeContext } from '../providers/Theme';
 
 import StyledGridCell from './styles/StyledGridCell';
 
 const GridCell = ({ value }) => {
-  const theme = useContext(ThemeContext);
+  const { theme } = useContext(ThemeContext);
   return (
     <StyledGridCell
       className={value ? 'alive' : 'dead'}

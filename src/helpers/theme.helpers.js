@@ -1,24 +1,11 @@
 import {
-  THEME_GREEN,
-  THEME_PURPLE,
-  THEME_BLUE,
-  THEME_GREY,
-  THEME_RED,
-  THEME_ORANGE,
   THEMES
 } from '../constants';
 
 export const getRandomTheme = () => {
-  const themes = [
-    THEME_GREEN,
-    THEME_PURPLE,
-    THEME_BLUE,
-    THEME_GREY,
-    THEME_RED,
-    THEME_ORANGE
-  ];
-
-  return themes[Math.floor(Math.random() * themes.length)];
+  const themeColors = Object.keys(THEMES);
+  const randomTheme = themeColors[Math.floor(Math.random() * themeColors.length)];
+  return THEMES[randomTheme];
 };
 
 /*

@@ -1,15 +1,10 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
 import PropTypes from'prop-types';
 
 import GameLayout from './components/GameLayout';
-import { ThemeContext } from './contexts/Theme';
 
-import { getRandomTheme } from './helpers/theme.helpers';
-
-import {
-  THEMES
-} from './constants';
+import { ThemeContext } from './providers/Theme';
 
 const StyledApp = styled.div`
   display: flex;
@@ -25,18 +20,12 @@ StyledApp.propTypes = {
 };
 
 function App() {
-  const [theme, setTheme] = useState(THEMES[getRandomTheme()]);
-
-  function handleChangeTheme(theme) {
-    setTheme(THEMES[theme]);
-  }
+  const { theme } = useContext(ThemeContext);
 
   return (
-    <ThemeContext.Provider value={theme}>
-      <StyledApp backgroundColor={theme.secundaryColorDark}>
-        <GameLayout onThemeChange={handleChangeTheme} />
-      </StyledApp>
-    </ThemeContext.Provider>
+    <StyledApp backgroundColor={theme.secundaryColorDark}>
+      <GameLayout />
+    </StyledApp>
   );
 };
 
