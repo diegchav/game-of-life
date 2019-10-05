@@ -35,18 +35,18 @@ export const THEMES = {
     secundaryColorDark: '#002f6c'
   },
   [THEME_GREY]: {
-    primaryColor: '#757575',
-    secundaryColorLight: '#a4a4a4',
-    secundaryColorDark: '#494949'
+    primaryColor: '#37474f',
+    secundaryColorLight: '#62727b',
+    secundaryColorDark: '#102027'
   },
   [THEME_RED]: {
-    primaryColor: '#e57373',
-    secundaryColorLight: '#ffa4a2',
-    secundaryColorDark: '#af4448'  
+    primaryColor: '#b71c1c',
+    secundaryColorLight: '#f05545',
+    secundaryColorDark: '#7f0000'
   },
   [THEME_ORANGE]: {
-    primaryColor: '#ffb74d',
-    secundaryColorLight: '#ffe97d',
-    secundaryColorDark: '#c88719'
+    primaryColor: '#f57f17',
+    secundaryColorLight: '#ffb04c',
+    secundaryColorDark: '#bc5100'
   }
 };
