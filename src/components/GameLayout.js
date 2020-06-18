@@ -15,7 +15,7 @@ import {
   MAX_UPDATE_INTERVAL
 } from '../constants';
 
-function GameLayout({ onThemeChange }) {
+function GameLayout() {
   const [ grid, setGrid ] = useState(generatePopulation(GRID_SIZE));
   const [ gridSize, setGridSize ] = useState(GRID_SIZE);
   const [ speed, setSpeed ] = useState(UPDATE_INTERVAL);
